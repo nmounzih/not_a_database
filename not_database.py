@@ -15,6 +15,11 @@ class User:
     def see_info(self):
         print(self)
 
+    def add_new_user(self):
+        with open("travel_plans.csv", "a") as csvfile:
+             csvfile.write("{},{},{},{}\n".format(self.user_name, self.password, self.full_name, self.destination))
+        csvfile.close()
+
 def clear():
     os.system("clear")
 
@@ -47,12 +52,6 @@ def check_login(login_name, login_password):
     else:
         return False
 
-# def add_new_user(self):
-#     with open("travel_plans", "w") as f:
-#         new_user = [] "{},{},{},{}\n".format(self.user_name, self.password, self.full_name, self.destination)
-#         f.write(new_user)
-#     f.close()
-
 
 def main():
     success = 0
@@ -74,6 +73,11 @@ def main():
                 new_password = input("Please enter new password: ")
                 new_fullname = input("What is your full name? ")
                 new_destination = input("Where would you like to travel next? ")
+                new_user = User(new_username, new_password, new_fullname, new_destination)
+                new_user.add_new_user()
+                clear()
+                print("Your information has been saved.")
+
             elif user_choice == 'l':
                 clear()
                 success -= 1
