@@ -55,10 +55,12 @@ def check_login(login_name, login_password):
 
 def main():
     success = 0
-    print("Welcome to travel database")
+    print("\n*Welcome to Travel Info*\n")
     while True:
         while success == 0:
-            login_name = input("What is your username? ")
+            login_name = input("Press [q] to quit. \n\nWhat is your username? ").lower()
+            if login_name == 'q':
+                exit()
             login_password = input("Enter your password: ")
             if check_login(login_name, login_password) is True:
                 print("You have successfully logged in.")
